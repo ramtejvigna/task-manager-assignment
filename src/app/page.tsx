@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Plus, Loader2, Check, X, Pencil, Trash, Calendar, Clock } from 'lucide-react';
+import { Plus, Loader2, Check, X, Pencil, Trash, Calendar } from 'lucide-react';
 import TaskForm from './components/TaskForm';
 import { Task } from './types/task';
 
