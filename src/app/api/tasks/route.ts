@@ -7,8 +7,8 @@ export async function GET() {
         await dbConnect();
         const tasks = await Task.find({}).sort({ createdAt: -1 });
         return NextResponse.json(tasks);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch tasks" }, { status: 500 });
+    } catch (err) {
+        return NextResponse.json({ error: "Failed to fetch tasks", err }, { status: 500 });
     }
 }
 
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
         const taskData = await request.json();
         const task = await Task.create(taskData);
         return NextResponse.json(task);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to create task" }, { status: 500 });
+    } catch (err) {
+        return NextResponse.json({ error: "Failed to create task", err }, { status: 500 });
     }
 }
