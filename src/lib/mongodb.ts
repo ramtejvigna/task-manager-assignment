@@ -7,7 +7,7 @@ if (!MONGODB_URI) {
 }
 
 // Module-scoped cache
-let cached: {
+const cached: {
     conn: typeof mongoose | null;
     promise: Promise<typeof mongoose> | null;
 } = { conn: null, promise: null };
