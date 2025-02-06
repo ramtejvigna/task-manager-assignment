@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Plus, Loader2, Check, X, Pencil, Trash, Calendar, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import TaskForm from './components/TaskForm';
 import { Task } from './types/task';
-import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -271,7 +270,6 @@ export default function Home() {
           </div>
         )}
       </div>
-      <Toaster />
     </div>
   );
 }
