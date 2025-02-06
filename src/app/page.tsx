@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Plus, Loader2, Check, X, Pencil, Trash, Calendar, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import TaskForm from './components/TaskForm';
 import { Task } from './types/task';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
