@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Plus, Loader2, Check, X, Pencil, Trash, Calendar, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import TaskForm from './components/TaskForm';
 import { Task } from './types/task';
-import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'incomplete' | 'completed'>('incomplete');
   const [currentPage, setCurrentPage] = useState(1);
   const tasksPerPage = 3;
-  const { toast } = useToast();
 
   useEffect(() => {
     fetchTasks();
@@ -27,11 +25,6 @@ export default function Home() {
       setTasks(data);
     } catch (error) {
       console.error('Failed to fetch tasks:', error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to fetch tasks. Please try again.",
-      });
     } finally {
       setLoading(false);
     }
@@ -47,27 +40,15 @@ export default function Home() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(task),
         });
-        toast({
-          title: "Success",
-          description: "Task created successfully!",
-        });
       } else if (action === 'update') {
         response = await fetch(`/api/tasks/${task._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(task),
         });
-        toast({
-          title: "Success",
-          description: task.completed ? "Task marked as complete!" : "Task updated successfully!",
-        });
       } else {
         response = await fetch(`/api/tasks/${task._id}`, {
           method: 'DELETE',
-        });
-        toast({
-          title: "Success",
-          description: "Task deleted successfully!",
         });
       }
       
@@ -77,11 +58,6 @@ export default function Home() {
       setEditingTask(null);
     } catch (error) {
       console.error('Task action failed:', error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: `Failed to ${action} task. Please try again.`,
-      });
     } finally {
       setLoading(false);
     }
