@@ -4,7 +4,9 @@ This is a task management application built using Next.js and MongoDB. It allows
 
 ## 🚀 Live Demo
 
-🔗 [Task Manager](https://task-manager-orpin-pi.vercel.app/)
+<img src="Image 1.png" alt="Demo" />
+
+🔗 <a href="https://task-manager-orpin-pi.vercel.app/" target="_blank">Task Manager</a>
 
 ## 🛠 Tech Stack
 
