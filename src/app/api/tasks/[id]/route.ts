@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import { Task } from '@/lib/models/Task';
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         await dbConnect();
         const taskData = await request.json();
@@ -13,7 +13,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
     }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         await dbConnect();
         await Task.findByIdAndDelete(params.id);
